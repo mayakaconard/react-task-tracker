@@ -19,11 +19,17 @@ const App = () =>
       "reminder": true
     }
   ])
+
+  // Delete Task
+  const deleteTask = (id) =>
+  {
+    SetTasks(tasks.filter((task) => task.id !== id))
+  }
   return (
     <div className="container">
 
       <Header />
-      <Tasks tasks={tasks} />
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : 'No task found!'}
     </div>
   );
 }
